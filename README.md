@@ -1,7 +1,7 @@
 # Creating-Docs-from-Power-Apps
-Learn how to update document templates and create documents from Power Apps using Power Automate.
+Learn how to update document templates and create documents from Power Apps using Power Automate https://youtu.be/Rdxy39be4g0
 
-Included in the sample are the word, excel and html templates used in the demo on my YouTube.  An export of the SharePoint Customer List as an Excel file and the Power Platform unmanaged solution including the Power App, Power Automate Cloud Flow, Environment Variables for the SharePoint Site and Customer List and Connection References.
+Included in the sample are the word, excel and html templates used in the demo on my YouTube.  An export of the SharePoint Customer List as an Excel file, the Excel Office Script and the Power Platform unmanaged solution including the Power App, Power Automate Cloud Flow, Environment Variables for the SharePoint Site and Customer List and Connection References.
 
 You are responsible for ensuring that this solution is updated to work within your environment and will need to setup a document library and update the document library references within the flow.
 
