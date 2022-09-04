@@ -1,0 +1,56 @@
+function main(
+  workbook: ExcelScript.Workbook,
+  invoiceNumber: string,
+  date: string,
+  paymentMethod: string,
+  chequeNo: string,
+  jobNo: string,
+  vatRate: number,
+  customer: Customer,
+  sales: Sales[],
+) {
+  // Get the first worksheet 
+  const sheet = workbook.getFirstWorksheet();
+
+
+  //Update Header of Sales Receipt 
+  sheet.getRange("G2").setValue(invoiceNumber);
+  sheet.getRange("G3").setValue(date);
+  sheet.getRange("B9").setValue(paymentMethod);
+  sheet.getRange("D9").setValue(chequeNo);
+  sheet.getRange("E9").setValue(jobNo);
+  sheet.getRange("G27").setValue(vatRate);
+
+
+  //Update Customer Details
+  const formattedCustomer = [[customer.name], [customer.companyName], [customer.street], [customer.city], [customer.phone]];
+  sheet.getRange("C2:C6").setValues(formattedCustomer);
+
+
+  //Update Sales Lines 
+  const salesOffset = 12; //starting row for items on invoice 
+  for (let i = 0; i < sales.length; i++) {
+    const currentSales = sales[i];
+    const formattedSales = [[currentSales.quantity, currentSales.itemNumber, currentSales.description, currentSales.unitPrice, currentSales.discount]];
+    const saleCell = `B${salesOffset + i}:F${salesOffset + i}`;
+    sheet.getRange(saleCell).setValues(formattedSales);
+  }
+}
+
+
+interface Customer {
+  name: string,
+  companyName: string,
+  street: string,
+  city: string,
+  phone: string,
+}
+
+
+interface Sales {
+  quantity: number,
+  itemNumber: string,
+  description: string,
+  unitPrice: number,
+  discount: number,
+}
